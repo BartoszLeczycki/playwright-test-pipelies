@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
     steps:
@@ -48,15 +48,14 @@ jobs:
         path: playwright-report/
         retention-days: 30
 
-    - name: Upload report to GitHub Pages artifact
+    - name: Deploy Playwright report to gh-pages
       if: ${{ github.ref == 'refs/heads/main' && always() }}
-      uses: actions/upload-pages-artifact@v1
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        path: playwright-report
-
-    - name: Deploy Pages
-      if: ${{ github.ref == 'refs/heads/main' && always() }}
-      uses: actions/deploy-pages@v1
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./playwright-report
+        publish_branch: gh-pages
+        allow_empty_commit: true
 
     - name: Add report link to job summary
       if: ${{ github.ref == 'refs/heads/main' && always() }}
