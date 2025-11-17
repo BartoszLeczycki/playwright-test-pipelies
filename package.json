@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pw:install": "playwright install --with-deps",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BartoszLeczycki/playwright-test-pipelies.git"
