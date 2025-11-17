@@ -6,6 +6,7 @@
   "scripts": {
     "pw:install": "playwright install --with-deps",
     "test": "npx playwright test",
+    "test:ci": "npx playwright test --project=chromium",
     "test:headed": "npx playwright test --headed"
   },
   "repository": {

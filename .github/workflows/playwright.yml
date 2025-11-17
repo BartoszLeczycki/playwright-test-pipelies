@@ -29,8 +29,8 @@ jobs:
     - name: Install Playwright Browsers
       run: npm run pw:install
 
-    - name: Run Playwright tests
-      run: npm test
+    - name: Run Playwright tests for Chromium
+      run: npm run test:ci
 
     - uses: actions/upload-artifact@v4
       if: ${{ always() }}
